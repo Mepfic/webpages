@@ -26,6 +26,13 @@ function setNativeBraintreeDeviceData(deviceData) {
     showAlert('Device data received successfully.');
 }
 
+// Function to set token from native app
+function setToken(token) {
+    // Display the token in the text field
+    document.getElementById('tokenField').value = token;
+    showAlert('Token received successfully: ' + token);
+}
+
 // Function to show the custom alert
 function showAlert(message) {
     var alertBox = document.getElementById('customAlert');
@@ -39,6 +46,11 @@ function showAlert(message) {
 }
 
 // Create the android object on window to handle native-to-web communication
-window.android = {
+window.app = {
     setNativeBraintreeDeviceData: setNativeBraintreeDeviceData
+};
+
+// Create the app object to handle native-to-web communication from native app
+window.app = {
+    setToken: setToken  // Adding the setToken method to the app object for native-to-web communication
 };
