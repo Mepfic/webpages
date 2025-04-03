@@ -4,73 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Request Native Device Data</title>
-    <style>
-        /* Style for the custom alert */
-        .alert {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #f44336;
-            color: white;
-            padding: 10px 20px;
-            font-size: 16px;
-            border-radius: 5px;
-            display: none;
-            z-index: 1000;
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
 <h1>Request Native Device Data</h1>
 
-<!-- Label for button -->
+<!-- Label for button to request device data -->
 <button id="requestButton">Request Native Device Data</button>
 
 <br><br>
 
-<!-- Label for textarea -->
+<!-- Label for textarea to display device data -->
 <label for="deviceData">Device Data:</label>
 <textarea id="deviceData" rows="10" cols="20" readonly></textarea>
+
+<br><br>
+
+<!-- Label for button to request app version -->
+<button id="requestAppVersion">Request App Version</button>
+
+<!-- Label to display the app version -->
+<p id="appVersion"></p>
 
 <!-- Custom alert box -->
 <div id="customAlert" class="alert"></div>
 
-<script>
-    // Function to trigger native method call
-    document.getElementById('requestButton').addEventListener('click', function() {
-        // Check if the Android interface and method are available
-        if (window.android && typeof window.android.requestNativeBraintreeDeviceData === 'function') {
-            // Call the native method to request data
-            window.android.requestNativeBraintreeDeviceData();
-        } else {
-            showAlert('Native interface "requestNativeBraintreeDeviceData" not available.');
-        }
-    });
-
-    // Function to receive data from the native app and update the textarea
-    function setNativeBraintreeDeviceData(deviceData) {
-        // Update the textarea with the received device data
-        document.getElementById('deviceData').value = deviceData;
-        showAlert('Device data received successfully.');
-    }
-
-    // Create the android object on window to handle native-to-web communication
-    window.android = {
-        setNativeBraintreeDeviceData: setNativeBraintreeDeviceData
-    };
-
-    // Function to show the custom alert
-    function showAlert(message) {
-        var alertBox = document.getElementById('customAlert');
-        alertBox.textContent = message;  // Set the message
-        alertBox.style.display = 'block';  // Show the alert box
-
-        // Hide the alert after 3 seconds
-        setTimeout(function() {
-            alertBox.style.display = 'none';
-        }, 1000);
-    }
-</script>
+<script src="assets/js/app.js"></script>
 </body>
 </html>
