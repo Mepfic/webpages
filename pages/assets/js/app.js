@@ -1,12 +1,4 @@
-// Function to trigger native method call for device data
-document.getElementById('requestButton').addEventListener('click', function() {
-    if (window.android && typeof window.android.requestNativeBraintreeDeviceData === 'function') {
-        // Call the native method to request device data
-        window.android.requestNativeBraintreeDeviceData();
-    } else {
-        showAlert('Native interface "requestNativeBraintreeDeviceData" not available.');
-    }
-});
+
 
 // Function to trigger native method call for app version
 document.getElementById('requestAppVersion').addEventListener('click', function() {
@@ -16,6 +8,26 @@ document.getElementById('requestAppVersion').addEventListener('click', function(
         document.getElementById('appVersion').value = 'App Version: ' + appVersion;
     } else {
         showAlert('Native interface "appVersion" not available.');
+    }
+});
+
+// Function to trigger native method call for app version
+document.getElementById('refreshAuthToken').addEventListener('click', function() {
+    if (window.android && typeof window.android.refreshAuthToken === 'function') {
+        // Call the native method to request app version
+        window.android.refreshAuthToken();
+    } else {
+        showAlert('Native interface "appVersion" not available.');
+    }
+});
+
+// Function to trigger native method call for device data
+document.getElementById('requestButton').addEventListener('click', function() {
+    if (window.android && typeof window.android.requestNativeBraintreeDeviceData === 'function') {
+        // Call the native method to request device data
+        window.android.requestNativeBraintreeDeviceData();
+    } else {
+        showAlert('Native interface "requestNativeBraintreeDeviceData" not available.');
     }
 });
 
