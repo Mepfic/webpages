@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Native Device Data</title>
+</head>
+<body>
+<h1>Request Native Device Data</h1>
+
+<!-- Label for button -->
+<button id="requestButton">Request Native Device Data</button>
+
+<br><br>
+
+<!-- Label for textarea -->
+<label for="deviceData">Device Data:</label>
+<textarea id="deviceData" rows="10" cols="50" readonly></textarea>
+
+<script>
+    // Function to trigger native method call
+    document.getElementById('requestButton').addEventListener('click', function() {
+        if (window.app && typeof window.app.requestNativeBraintreeDeviceData === 'function') {
+            window.app.requestNativeBraintreeDeviceData();
+        } else {
+            alert('Native interface not available.');
+        }
+    });
+
+    // Function to receive data from the native app
+    function setNativeBraintreeDeviceData(deviceData) {
+        document.getElementById('deviceData').value = deviceData;
+    }
+
+    // The native app will call this method with the data
+    window.app = {
+        setNativeBraintreeDeviceData: setNativeBraintreeDeviceData
+    };
+</script>
+</body>
+</html>
