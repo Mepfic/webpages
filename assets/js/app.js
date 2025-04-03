@@ -13,7 +13,7 @@ document.getElementById('requestAppVersion').addEventListener('click', function(
     if (window.android && typeof window.android.appVersion === 'function') {
         // Call the native method to request app version
         const appVersion = window.android.appVersion();
-        document.getElementById('appVersion').innerText = 'App Version: ' + appVersion;
+        document.getElementById('appVersion').value = 'App Version: ' + appVersion;
     } else {
         showAlert('Native interface "appVersion" not available.');
     }
@@ -46,7 +46,7 @@ function showAlert(message) {
 }
 
 // Create the android object on window to handle native-to-web communication
-window.app = {
-    setNativeBraintreeDeviceData: setNativeBraintreeDeviceData
+window.app = Object.assign(window.app || {}, {
+    setNativeBraintreeDeviceData: setNativeBraintreeDeviceData,
     setToken: setToken
-};
+});
