@@ -20,10 +20,10 @@
 <script>
     // Function to trigger native method call
     document.getElementById('requestButton').addEventListener('click', function() {
-        if (window.app && typeof window.app.requestNativeBraintreeDeviceData === 'function') {
-            window.app.requestNativeBraintreeDeviceData();
+        if (window.android && typeof window.android.requestNativeBraintreeDeviceData === 'function') {
+            window.android.requestNativeBraintreeDeviceData();
         } else {
-            alert('Native interface not available.');
+            alert('Native interface 'requestNativeBraintreeDeviceData' not available.');
         }
     });
 
@@ -33,7 +33,7 @@
     }
 
     // The native app will call this method with the data
-    window.app = {
+    window.android = {
         setNativeBraintreeDeviceData: setNativeBraintreeDeviceData
     };
 </script>
