@@ -9,23 +9,26 @@
 <body>
 <h1>Testing web <-> native bridge</h1>
 
-<!-- New token field -->
 <label for="tokenField">Token:</label>
 <input type="text" id="tokenField" readonly/>
 <script src="assets/js/app.js"></script>
 
 <br><br>
 
-<!-- Label for button -->
+<button id="requestAppVersion">Get app version</button>
+
+<br><br>
+
+<label for="appVersion">App version:</label>
+<textarea id="appVersion" readonly></textarea>
+
 <button id="requestButton">Request Native Device Data</button>
 
 <br><br>
 
-<!-- Label for textarea -->
 <label for="deviceData">Device Data:</label>
 <textarea id="deviceData" readonly></textarea>
 
-<!-- Custom alert box -->
 <div id="customAlert" class="alert"></div>
 
 </body>
