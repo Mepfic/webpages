@@ -48,9 +48,5 @@ function showAlert(message) {
 // Create the android object on window to handle native-to-web communication
 window.app = {
     setNativeBraintreeDeviceData: setNativeBraintreeDeviceData
-};
-
-// Create the app object to handle native-to-web communication from native app
-window.app = {
-    setToken: setToken  // Adding the setToken method to the app object for native-to-web communication
+    setToken: setToken
 };
