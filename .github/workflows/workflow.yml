@@ -11,16 +11,11 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Create build directory
-        run: mkdir -p build
-
-      - name: Copy HTML files from Pages to build directory
-        run: cp -r pages/*.html build/  # Copy all HTML files from the Pages folder to build
+        uses: actions/checkout@v4
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GH_DEPLOY_TOKEN }}
-          publish_dir: ./build  # Publish from the build directory
+          publish_dir: ./pages  # Publish from the build directory
+          target_branch: gh-pages # Target branch
